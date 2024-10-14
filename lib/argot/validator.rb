@@ -50,7 +50,7 @@ module Argot
 
     def safe_load(permitted_classes: [], permitted_symbols: [], aliases: false, filename: nil, fallback: nil, symbolize_names: false, freeze: false, strict_integer: false, ignore_validation_errors: false)
       return nil if errors? && !ignore_validation_errors
-      return fallback unless tree
+      return fallback unless @document_node
 
       class_loader = Psych::ClassLoader::Restricted.new(permitted_classes.map(&:to_s), permitted_symbols.map(&:to_s))
 
@@ -63,7 +63,7 @@ module Argot
       end
 
       begin
-        result = visitor.accept tree
+        result = visitor.accept @document_node
       rescue Psych::DisallowedClass => e
         raise Argot::MaliciousInput, e.message
       end
