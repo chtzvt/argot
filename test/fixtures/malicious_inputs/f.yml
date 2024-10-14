@@ -1,0 +1,6 @@
+evil:
+  - !ruby/object:Gem::Specification &unsafe_anchor
+    name: "anchored_exploit"
+    post_install_message: "$(touch /tmp/anchored_pwn.txt)"
+  - unsafe_alias: *unsafe_anchor
+  - normal_string: "This is safe data"

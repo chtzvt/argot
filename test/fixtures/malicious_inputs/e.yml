@@ -1,0 +1,7 @@
+evil:
+  - !ruby/struct
+    name: "system"
+    members:
+      - command
+    values:
+      - 'echo "RCE Vulnerability!" > /tmp/vulnerable.txt'

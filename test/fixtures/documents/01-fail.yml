@@ -1,0 +1,20 @@
+version: "latest"
+
+farmer_name: "Farmr Charlton"
+
+farmer_level: "goof"
+
+meats:
+  beef_from_japan:
+    grade: "A"
+  beef_from_usa:
+    grade: null
+  beef_from_the_gutter:
+    grade: "F"
+
+good_number: 9001
+
+farm:
+  goat_zone:
+    goats_count: 99
+    #pasture_uuid: "7376408D-1DCA-4956-82AD-1D33CEBC15CF"

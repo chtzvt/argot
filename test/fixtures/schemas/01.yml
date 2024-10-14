@@ -1,0 +1,34 @@
+%TAG ! tag:argot.packfiles.io,2024:
+---
+!o version: !one
+  - !l "latest"
+  - !x '^\d+.\d+.\d+$'
+
+!o witchcraft: !one
+  - !o cream: !one
+      - !l "face"
+      - !l "soda"
+  - !l "j"
+
+!o optional_parent:
+  !r required_child: !l "ghouls"
+
+!r farmer_name: !x "^Farmer [a-zA-Z]+$"
+
+!o farmer_level: !t Integer
+
+!o good_number: !rg "30 to 60"
+
+!o meats:
+  !x "beef_from_.*":
+    !r grade: !one
+      - !l "A"
+      - !l "B"
+      - !l "C"
+      - !l "F"
+      - !x "^(very|not) tasty$"
+
+!o farm:
+  !o goat_zone:
+    !r pasture_uuid: !x "^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$"
+    !o goats_count: !t Integer

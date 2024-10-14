@@ -1,0 +1,4 @@
+evil:
+  - !ruby/object:Gem::Specification
+    name: "pwned"
+    post_install_message: '$(echo "MALICIOUS CODE EXECUTED")'

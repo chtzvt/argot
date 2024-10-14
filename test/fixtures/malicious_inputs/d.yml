@@ -1,0 +1,4 @@
+evil:
+  - !ruby/object:File
+    path: /etc/passwd
+    mode: r
