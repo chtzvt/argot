@@ -19,9 +19,7 @@ module Argot
       end
 
       def validate(value)
-        return false unless value.is_a?(String)
-
-        value.match?(@regex)
+        value.to_s.match?(@regex)
       end
     end
   end

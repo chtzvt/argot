@@ -2,6 +2,7 @@
 ---
 !o version: !one
   - !l "latest"
+  - !x '^\d+.\d+$'
   - !x '^\d+.\d+.\d+$'
 
 !o witchcraft: !one
