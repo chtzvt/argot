@@ -6,16 +6,8 @@ module Argot
 
       annotates :key
 
-      def validate(schema_node, document_node)
-        key = schema_node.path.join(".")
-        unless document_node
-          Argot::Annotation.new(
-            title: "Missing Required Field",
-            message: "Field '#{key}' is required but missing",
-            level: Annotation::FAILURE,
-            location: schema_node.location
-          )
-        end
+      def validate(value)
+        true
       end
     end
   end
