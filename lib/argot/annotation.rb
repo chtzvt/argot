@@ -1,8 +1,16 @@
 module Argot
   class Annotation
+    include Comparable
+
     NOTICE = :notice
     WARNING = :warning
     FAILURE = :failure
+
+    ORDERED_LEVELS = {
+      NOTICE => 0,
+      WARNING => 1,
+      FAILURE => 2
+    }
 
     attr_reader :start_line, :end_line, :start_column, :end_column, :level, :message, :title, :details
     attr_accessor :path
@@ -47,6 +55,10 @@ module Argot
       msg = "[#{@level.to_s.upcase}] At lines:#{@start_line}-#{@end_line} cols:#{@start_column}-#{@end_column} of #{@path} -- #{@title}: #{@message}"
       msg += " (#{@details})" unless @details == @message
       msg
+    end
+
+    def <=>(other)
+      ORDERED_LEVELS[level] <=> ORDERED_LEVELS[other.level]
     end
   end
 end

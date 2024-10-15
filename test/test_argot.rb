@@ -52,6 +52,17 @@ class TestArgot < Minitest::Test
     end
   end
 
+  def test_that_annotations_are_comparable
+    loc = {start_line: 1, end_line: 1, start_column: 1, end_column: 1}
+    a1 = Argot::Annotation.new(level: Argot::Annotation::NOTICE, location: loc)
+    a2 = Argot::Annotation.new(level: Argot::Annotation::WARNING, location: loc)
+    a3 = Argot::Annotation.new(level: Argot::Annotation::FAILURE, location: loc)
+
+    assert a3 > a2
+    assert a2 > a1
+    assert a1 < a3
+  end
+
   def test_that_it_has_a_version_number
     refute_nil ::Argot::VERSION
   end
