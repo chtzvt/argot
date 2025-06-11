@@ -65,7 +65,30 @@ If bundler is not being used to manage dependencies, install the gem by executin
 
 ## Usage
 
-TODO: Write usage instructions here
+First, register an Argot schema:
+
+```ruby
+test_schema = File.read("./test/fixtures/schemas/01.yml")
+Argot::Schema.register(:test_schema, test_schema)
+```
+
+Then, validate some YAML files:
+
+```ruby
+rules = Argot::Schema.for(:test_schema)
+
+passing_document = File.read("./test/fixtures/documents/01-pass.yml")
+failing_document = File.read("./test/fixtures/documents/01-fail.yml")
+
+
+validator = Argot::Validator.parse_and_validate(rules, failing_document)
+validator.errors? # true
+validator.safe_load # nil
+
+validator = Argot::Validator.parse_and_validate(rules, passing_document)
+validator.errors? # false
+validator.safe_load # parsed document Hash
+```
 
 ## Development
 
